@@ -1,0 +1,239 @@
+Update the existing CustomOrder.jsx file.
+
+IMPORTANT:
+Do NOT remove or redesign the current Custom Order system.
+Do NOT modify existing furniture ordering functionality.
+Do NOT change current styling, theme, colors, navigation or workflow.
+
+Only extend the existing AI Scanner section.
+
+Current AI Scanner Flow:
+
+capture
+→ processing
+→ contact
+→ done
+
+Enhance this flow as follows:
+
+====================================
+STEP 1 - ROOM CAPTURE
+=====================
+
+Replace the current single image upload section with two options:
+
+Option A:
+Upload Room Photo
+
+* User can upload only one image.
+* Keep current upload functionality.
+* Show image preview after upload.
+
+Option B:
+360° Room Scan
+
+* Add a "Start 360° Scan" button.
+* Open device camera.
+* Allow room recording.
+* Simulate room scanning experience.
+* Store video preview locally.
+
+UI should display:
+
+Upload Photo
+OR
+Scan Room in 360°
+
+====================================
+STEP 2 - OPTIONAL ROOM DETAILS
+==============================
+
+After upload/scan show:
+
+Skip button
+
+Optional fields:
+
+* Room Type
+* Budget
+* Interior Style
+* Color Preference
+* Furniture Requirement
+
+User can continue without filling anything.
+
+====================================
+STEP 3 - AI ROOM ANALYSIS
+=========================
+
+Replace the current simple processing screen.
+
+Create realistic AI analysis progress.
+
+Show animated steps:
+
+Detecting Walls...
+Detecting Doors...
+Detecting Windows...
+Identifying Furniture...
+Calculating Empty Space...
+Generating Layout...
+Building Design...
+Preparing Visualization...
+
+Store generated mock analysis data in state.
+
+Example:
+
+{
+roomType: "Bedroom",
+walls: 4,
+windows: 2,
+doors: 1,
+furniture: ["Bed","Wardrobe"],
+emptySpace: "35%"
+}
+
+====================================
+STEP 4 - DESIGN EDITOR
+======================
+
+After AI processing completed:
+
+Open Design Editor screen.
+
+Provide two modes:
+
+1. 2D Layout Editor
+2. 3D Visualization
+
+Default:
+
+Open 2D Mode first.
+
+Allow user to:
+
+* Move furniture
+* Add furniture
+* Remove furniture
+* Change wall colors
+* Change flooring
+* Change ceiling style
+* Change lighting
+
+If user clicks:
+
+"Generate 3D Design"
+
+show loading animation
+
+then open 3D mode.
+
+====================================
+STEP 5 - 360° VISUALIZATION
+===========================
+
+Create immersive room preview section.
+
+Features:
+
+* Rotate View
+* Zoom In
+* Zoom Out
+* Walkthrough Mode
+* Top View
+
+Use Three.js + React Three Fiber.
+
+Initially create placeholder 3D environment.
+
+Architecture should support future real AI room generation.
+
+====================================
+STEP 6 - COST ESTIMATION
+========================
+
+After design finalized:
+
+Generate estimated cost card.
+
+Display:
+
+Furniture Cost
+Wall Cost
+Ceiling Cost
+Lighting Cost
+Flooring Cost
+
+Total Estimated Cost
+
+Also show:
+
+Budget Package
+Standard Package
+Premium Package
+
+====================================
+STEP 7 - FINAL SUBMISSION
+=========================
+
+Before existing contact form:
+
+Show summary page.
+
+Display:
+
+* Uploaded Photo or Scan
+* Room Analysis Result
+* Selected Design
+* Estimated Cost
+
+Then collect:
+
+* Name
+* Phone
+* Email
+* City
+* Address
+
+====================================
+ADMIN DATA
+==========
+
+When user submits:
+
+Save in localStorage:
+
+craftofy_custom_orders
+
+Store:
+
+* User Details
+* Room Image
+* Scan Data
+* Analysis Result
+* Selected Design
+* Estimated Cost
+* Submission Date
+
+====================================
+TECHNICAL REQUIREMENTS
+======================
+
+Use existing React architecture.
+
+Keep existing styling.
+
+Use Tailwind CSS.
+
+Create reusable components:
+
+RoomCapture.jsx
+RoomDetails.jsx
+RoomAnalysis.jsx
+DesignEditor.jsx
+Visualization360.jsx
+CostEstimator.jsx
+FinalSummary.jsx
+
+All new features must integrate into the existing AiScanner component without breaking current functionality.
