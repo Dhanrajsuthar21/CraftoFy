@@ -1,0 +1,28 @@
+You are an expert Full-Stack Developer and UI/UX Architect specializing in 3D Web Graphics, Computer Vision, and Generative AI. Your task is to build/refactor an AI-driven Interior Design Platform that converts user-uploaded room photos into highly realistic, fully editable, 3D 360-degree immersive environments.
+
+Fix all current UI/UX flaws and implement the following strict requirements:
+
+### 1. STREAMLINED USER ONBOARDING & FLEXIBLE INPUT
+* **No Forced Selections:** When a user uploads a photo, DO NOT force them to manually select or categorize the room type (e.g., kitchen, bedroom). The system must use an AI Computer Vision model to automatically detect the room type and layout.
+* **Optional Customization:** If the user wants to add specific tags or descriptions, it should be completely optional. Never block the user flow or prevent continuity due to missing metadata.
+
+### 2. UI/UX OVERHAUL (REMOVING BROKEN 2D ELEMENTS)
+* **Eliminate Clutter:** Remove the tiny, broken 2D boxes/wireframes that ruin the current UI/UX. 
+* **True Professional Scale:** If a 2D layout or minimap is needed, it must look modern and minimalist, but the primary focus must immediately shift to a full-screen immersive view.
+
+### 3. IMMERSIVE 3D & 360-DEGREE VIEWPORT (GAME-LIKE EXPERIENCE)
+* **Inside-the-Room Perspective:** Place the camera viewpoint strictly INSIDE the room/flat. The user must feel like they are standing inside the actual space, not looking at it from the outside.
+* **Full Screen Mode:** The 3D view must not be restricted to a small rectangle. Provide a seamless "Full-Screen Mode" toggle, mimicking professional software like Artcam Pro 9.
+* **Complete 360° Vision:** The camera must capture and render the entire room (all corners, ceiling, and floor), eliminating any blind spots.
+
+### 4. ADVANCED USER CONTROLS & EDITABILITY
+* **Manual Camera Control:** Disable any automatic camera rotation or spinning. The user must have absolute control over the camera using intuitive mouse drags, scroll-to-zoom, or touch gestures (Pan, Tilt, Zoom).
+* **High Realism & Interactability:** Every single interior element (furniture, lighting, textures) must look photorealistic—comparable to AAA games like BGMI or Free Fire.
+* **Fully Editable Elements:** Users must be able to click on any object (e.g., a sofa or lamp) inside the 3D space to move, rotate, scale, or replace it in real-time.
+
+### 5. RECOMMENDED TECH STACK (SUGGESTED IMPLEMENTATION)
+* **Frontend & 3D Rendering:** React.js / Next.js with Three.js, React Three Fiber (R3F), or Babylon.js for high-performance 360° rendering and game-like controls.
+* **Backend & Computer Vision:** Python (FastAPI/Flask) with OpenCV, PyTorch, or specialized Depth Estimation models (like MiDaS or ZoeDepth) to extract 3D space from a 2D photo.
+* **Generative AI:** Stable Diffusion (ControlNet / Inpainting) or specialized 3D NeRF/Gaussian Splatting pipelines to generate missing angles of the room and create realistic 3D assets.
+
+Analyze the codebase, remove the restrictive onboarding steps, fix the camera boundaries, optimize the UI for full-screen immersive rendering, and ensure the final output feels like a high-end, professional interior design software.
