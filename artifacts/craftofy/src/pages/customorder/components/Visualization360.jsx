@@ -1,6 +1,6 @@
-import React, { Suspense, useRef, useState, useEffect, useCallback } from 'react';
+import React, { Suspense, useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import { TransformControls, ContactShadows, Html, Environment } from '@react-three/drei';
+import { useGLTF, ContactShadows, Html, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 
 /* ─── Palettes ──────────────────────────────────────────────── */
@@ -82,7 +82,7 @@ function InsideCameraControls({ roomW, roomH, roomCH, enabled }) {
 }
 
 /* ─── Furniture Components ─────────────────────────────────── */
-function Sofa({ col, trim }) {
+function SofaOld({ col, trim }) {
   return (
     <group>
       <mesh castShadow receiveShadow position={[0,0.18,0]}>
@@ -108,6 +108,35 @@ function Sofa({ col, trim }) {
       ))}
     </group>
   );
+}
+
+function Sofa({ col, trim }) {
+  const { scene } = useGLTF(
+    "https://rszjkpkwdkplgkgrlafv.supabase.co/storage/v1/object/public/modals/uploads_files_7156693_Modern_L-Shaped_Sectional_Sofa_Free%20(1)%20(1).glb"
+  );
+  const cloned = useMemo(() => {
+    const s = scene.clone();
+    s.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+        if (child.material) {
+          const mats = Array.isArray(child.material) ? child.material : [child.material];
+          mats.forEach((mat) => {
+            const name = (mat.name || '').toLowerCase();
+            if (name.includes('wood') || name.includes('leg') || name.includes('trim') || name.includes('metal') || name.includes('base')) {
+              mat.color = new THREE.Color(trim);
+            } else {
+              mat.color = new THREE.Color(col);
+            }
+            mat.needsUpdate = true;
+          });
+        }
+      }
+    });
+    return s;
+  }, [scene, col, trim]);
+  return <primitive object={cloned} scale={0.8} position={[0, 0, 0]} />;
 }
 
 function Bed({ col, trim }) {
